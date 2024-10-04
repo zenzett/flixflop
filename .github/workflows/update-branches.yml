@@ -1,36 +1,81 @@
-name: Update UAT and Staging
+# name: Update UAT and Staging
+
+# on:
+#   push:
+#     branches:
+#       - master # Trigger the workflow on pushes to the master branch
+
+# jobs:
+#   update-branches:
+#     runs-on: ubuntu-latest # The environment where the job will run
+
+#     steps:
+#       - name: Checkout master
+#         uses: actions/checkout@v2 # Check out the master branch
+#         with:
+#           ref: master # Ensure we are working with the latest master
+#           fetch-depth: 0 # Fetch all branches and history
+
+#       - name: Configure Git (Identify Author)
+#         run: |
+#           git config user.name "Zain"
+#           git config user.email "zainazharul@gmail.com"
+
+#       - name: Update UAT
+#         run: |
+#           git fetch origin uat  # Fetch the uat branch from remote
+#           git checkout uat  # Switch to the uat branch
+#           git merge master  # Merge changes from master into uat
+#           git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git uat  # Push the updated uat branch to remote
+
+#       - name: Update Staging
+#         run: |
+#           git fetch origin staging  # Fetch the staging branch from remote
+#           git checkout staging  # Switch to the staging branch
+#           git merge master  # Merge changes from master into staging
+#           git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git staging  # Push the updated staging branch to remote
+
+name: Update Branches V2
 
 on:
   push:
     branches:
-      - master # Trigger the workflow on pushes to the master branch
+      - master
 
 jobs:
-  update-branches:
-    runs-on: ubuntu-latest # The environment where the job will run
-
+  update-uat:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout master
-        uses: actions/checkout@v2 # Check out the master branch
-        with:
-          ref: master # Ensure we are working with the latest master
-          fetch-depth: 0 # Fetch all branches and history
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Configure Git (Identify Author)
+      - name: Set up Git
         run: |
-          git config user.name "Zain"
-          git config user.email "zainazharul@gmail.com"
+          git config --local user.name "Zain"
+          git config --local user.email "zainazharul@gmail.com"
 
-      - name: Update UAT
+      - name: Merge master into uat
         run: |
-          git fetch origin uat  # Fetch the uat branch from remote
-          git checkout uat  # Switch to the uat branch
-          git merge master  # Merge changes from master into uat
-          git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git uat  # Push the updated uat branch to remote
+          git fetch origin uat
+          git checkout uat
+          git merge master --allow-unrelated-histories
+          git push origin uat
 
-      - name: Update Staging
+  update-staging:
+    runs-on: ubuntu-latest
+    needs: update-uat
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
         run: |
-          git fetch origin staging  # Fetch the staging branch from remote
-          git checkout staging  # Switch to the staging branch
-          git merge master  # Merge changes from master into staging
-          git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git staging  # Push the updated staging branch to remote
+          git config --local user.name "Zain"
+          git config --local user.email "zainazharul@gmail.com"
+
+      - name: Merge master into staging
+        run: |
+          git fetch origin staging
+          git checkout staging
+          git merge master --allow-unrelated-histories
+          git push origin staging
