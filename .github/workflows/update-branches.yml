@@ -56,6 +56,7 @@ jobs:
 
       - name: Merge master into uat
         run: |
+          git fetch origin uat
           git checkout uat
           git merge master
           git push origin uat
@@ -74,6 +75,7 @@ jobs:
 
       - name: Merge master into staging
         run: |
+          git fetch origin staging
           git checkout staging
           git merge master
           git push origin staging
