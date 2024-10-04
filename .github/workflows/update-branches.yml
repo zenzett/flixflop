@@ -58,8 +58,8 @@ jobs:
         run: |
           git fetch origin uat
           git checkout uat
-          git merge master
-          git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git uat
+          git merge master --allow-unrelated-histories
+          git push origin uat
 
   update-staging:
     runs-on: ubuntu-latest
@@ -77,5 +77,5 @@ jobs:
         run: |
           git fetch origin staging
           git checkout staging
-          git merge master
-          git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git staging
+          git merge master --allow-unrelated-histories
+          git push origin staging
