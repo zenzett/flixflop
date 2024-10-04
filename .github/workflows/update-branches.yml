@@ -1,0 +1,28 @@
+name: Update UAT and Staging
+
+on:
+  push:
+    branches:
+      - master # Trigger the workflow on pushes to the master branch
+
+jobs:
+  update-branches:
+    runs-on: ubuntu-latest # The environment where the job will run
+
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v2 # Check out the master branch
+        with:
+          ref: master # Ensure we are working with the latest master
+
+      - name: Update UAT
+        run: |
+          git checkout uat  # Switch to the uat branch
+          git merge master  # Merge changes from master into uat
+          git push origin uat  # Push the updated uat branch to remote
+
+      - name: Update Staging
+        run: |
+          git checkout staging  # Switch to the staging branch
+          git merge master  # Merge changes from master into staging
+          git push origin staging  # Push the updated staging branch to remote
