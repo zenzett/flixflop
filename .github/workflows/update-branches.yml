@@ -59,7 +59,7 @@ jobs:
           git fetch origin uat
           git checkout uat
           git merge master
-          git push origin uat
+          git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git uat
 
   update-staging:
     runs-on: ubuntu-latest
@@ -78,4 +78,4 @@ jobs:
           git fetch origin staging
           git checkout staging
           git merge master
-          git push origin staging
+          git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git staging
