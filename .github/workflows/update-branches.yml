@@ -11,7 +11,7 @@
 
 #     steps:
 #       - name: Checkout master
-#         uses: actions/checkout@latest # Check out the master branch
+#         uses: actions/checkout@v4 # Check out the master branch
 #         with:
 #           ref: master # Ensure we are working with the latest master
 #           fetch-depth: 0 # Fetch all branches and history
@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@latest
+        uses: actions/checkout@v4
 
       - name: Set up Git
         run: |
@@ -66,7 +66,7 @@ jobs:
     needs: update-uat
     steps:
       - name: Checkout repository
-        uses: actions/checkout@latest
+        uses: actions/checkout@v4
 
       - name: Set up Git
         run: |
