@@ -4,7 +4,7 @@ export default function Home() {
       className="flex flex-wrap md:flex-nowrap bg-dark-90"
       style={{ minHeight: "calc(100vh - 64px)" }}
     >
-      <span>Demo</span>
+      <span>Home</span>
     </div>
   );
 }
