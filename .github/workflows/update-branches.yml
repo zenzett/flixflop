@@ -21,11 +21,11 @@ jobs:
           git fetch origin uat  # Fetch the uat branch from remote
           git checkout uat  # Switch to the uat branch
           git merge master  # Merge changes from master into uat
-          git push origin uat  # Push the updated uat branch to remote
+          git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git uat  # Push the updated uat branch to remote
 
       - name: Update Staging
         run: |
           git fetch origin staging  # Fetch the staging branch from remote
           git checkout staging  # Switch to the staging branch
           git merge master  # Merge changes from master into staging
-          git push origin staging  # Push the updated staging branch to remote
+          git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git staging  # Push the updated staging branch to remote
