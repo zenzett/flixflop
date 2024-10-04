@@ -54,11 +54,11 @@ jobs:
           git config --local user.name "Zain"
           git config --local user.email "zainazharul@gmail.com"
 
-      - name: Merge master into uat
+      - name: Fetch and merge master into uat
         run: |
           git fetch origin uat
           git checkout uat
-          git merge master --allow-unrelated-histories
+          git merge origin/master --no-edit || (echo "Merge conflict in uat branch"; exit 1)
           git push origin uat
 
   update-staging:
@@ -73,9 +73,9 @@ jobs:
           git config --local user.name "Zain"
           git config --local user.email "zainazharul@gmail.com"
 
-      - name: Merge master into staging
+      - name: Fetch and merge master into staging
         run: |
           git fetch origin staging
           git checkout staging
-          git merge master --allow-unrelated-histories
+          git merge origin/master --no-edit || (echo "Merge conflict in staging branch"; exit 1)
           git push origin staging
