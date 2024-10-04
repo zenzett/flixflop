@@ -22,18 +22,18 @@ jobs:
           git config user.name "Zain"
           git config user.email "zainazharul@gmail.com"
 
-      - name: Merge master into UAT
+      - name: Fast-forward UAT to master
         run: |
           git fetch origin uat
           git checkout uat
-          git merge master
+          git merge --ff-only master || echo "No fast-forward possible for uat"
           git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git uat
 
-      - name: Merge master into Staging
+      - name: Fast-forward Staging to master
         run: |
           git fetch origin staging
           git checkout staging
-          git merge master
+          git merge --ff-only master || echo "No fast-forward possible for staging"
           git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git staging
 
 # Second Way
