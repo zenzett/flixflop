@@ -22,14 +22,14 @@ jobs:
           git config user.name "Zain"
           git config user.email "zainazharul@gmail.com"
 
-      - name: Update UAT
+      - name: Merge master into UAT
         run: |
           git fetch origin uat
           git checkout uat
           git merge master
           git push https://x-access-token:${{ secrets.PAT }}@github.com/zenzett/flixflop.git uat
 
-      - name: Update Staging
+      - name: Merge master into Staging
         run: |
           git fetch origin staging
           git checkout staging
