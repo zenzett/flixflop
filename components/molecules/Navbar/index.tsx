@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import UserIcon from "./_components/UserIcon";
+
 const Navbar = () => {
   return (
     <div className="h-16 px-20 py-4 flex justify-between items-center text-orange-40">
@@ -29,7 +31,7 @@ const Navbar = () => {
         </Link>
       </div>
       <Link href="/myprofile">
-        <div>My Profile</div>
+        <UserIcon />
       </Link>
     </div>
   );
