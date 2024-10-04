@@ -16,6 +16,11 @@ jobs:
           ref: master # Ensure we are working with the latest master
           fetch-depth: 0 # Fetch all branches and history
 
+      - name: Configure Git (Identify Author)
+        run: |
+          git config user.name "Zain"
+          git config user.email "zainazharul@gmail.com"
+
       - name: Update UAT
         run: |
           git fetch origin uat  # Fetch the uat branch from remote
