@@ -8,6 +8,9 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    domains: ["m.media-amazon.com"], // Tambahkan domain di sini
+  },
 };
 
 export default nextConfig;
