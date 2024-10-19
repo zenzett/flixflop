@@ -17,8 +17,13 @@ jobs:
         with:
           ref: uat
 
+      - name: Fetch Latest Changes
+        run: |
+          git fetch origin
+          git pull origin uat  # Ensure uat is up to date
+
       - name: Merge Feature Branch to UAT
         run: |
           git fetch origin +refs/heads/${{ github.event.pull_request.head.ref }}:refs/remotes/origin/${{ github.event.pull_request.head.ref }}
-          git merge --no-ff origin/${{ github.event.pull_request.head.ref }}
+          git merge --no-ff origin/${{ github.event.pull_request.head.ref }} || { echo 'Merge conflict occurred!'; exit 1; }
           git push origin uat
