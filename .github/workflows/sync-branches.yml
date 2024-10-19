@@ -1,0 +1,29 @@
+name: Sync UAT and Staging with Master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sync-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@v2
+        with:
+          ref: master
+
+      - name: Merge Master into UAT
+        run: |
+          git fetch origin uat
+          git checkout uat
+          git merge --no-ff origin/master
+          git push origin uat
+
+      - name: Merge Master into Staging
+        run: |
+          git fetch origin staging
+          git checkout staging
+          git merge --no-ff origin/master
+          git push origin staging

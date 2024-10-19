@@ -1,0 +1,24 @@
+name: Merge to Staging
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - staging
+
+jobs:
+  merge-to-staging:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Staging
+        uses: actions/checkout@v2
+        with:
+          ref: staging
+
+      - name: Merge Feature Branch to Staging
+        run: |
+          git fetch origin +refs/heads/${{ github.event.pull_request.head.ref }}:refs/remotes/origin/${{ github.event.pull_request.head.ref }}
+          git merge --no-ff origin/${{ github.event.pull_request.head.ref }}
+          git push origin staging
