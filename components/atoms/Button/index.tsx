@@ -1,10 +1,14 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes, ReactNode } from "react";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "primary-outline";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "danger"
+    | "primary-transparent"
+    | "danger-transparent";
   size?: "sm" | "md" | "lg";
   transparent?: boolean;
-  bordered?: boolean;
   isLoading?: boolean;
 };
 
@@ -14,7 +18,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>((props, ref) => {
     size = "md",
     transparent,
     className,
-    bordered,
+
     children,
     isLoading,
     ...attrs
@@ -22,14 +26,13 @@ const Button = React.forwardRef<HTMLButtonElement, Props>((props, ref) => {
 
   return (
     <button
-      className={"btn "
-        .concat(className ? `${className}` : "")
-        .concat(variant ? `${variant}` : "")
-        .concat(size === "sm" ? "sm" : "")
-        .concat(size === "md" ? "md" : "")
-        .concat(size === "lg" ? "lg" : "")
-        .concat(bordered ? "bordered" : "")
-        .concat(transparent ? "transparent" : "")}
+      className={"btn"
+        .concat(variant ? ` ${variant}` : "")
+        .concat(size === "sm" ? " sm" : "")
+        .concat(size === "md" ? " md" : "")
+        .concat(size === "lg" ? " lg" : "")
+        .concat(transparent ? " transparent" : "")
+        .concat(className ? ` ${className}` : "")}
       {...attrs}
       ref={ref}
     >
