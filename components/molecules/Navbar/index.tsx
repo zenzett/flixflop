@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import Button from "@/components/atoms/Button";
+
+import LoginIcon from "./_components/LoginIcon";
 import UserIcon from "./_components/UserIcon";
 
 const Navbar = () => {
@@ -31,7 +34,10 @@ const Navbar = () => {
         </Link>
       </div>
       <Link href="/myprofile">
-        <UserIcon />
+        <Button variant="primary-transparent" disabled>
+          {/* <UserIcon /> */}
+          <LoginIcon />
+        </Button>
       </Link>
     </div>
   );
