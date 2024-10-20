@@ -1,6 +1,6 @@
 import React, { FunctionComponent, HTMLAttributes } from "react";
 import Image from "next/image";
-import Link from "next/link"; // Import Link dari Next.js
+import Link from "next/link";
 
 type CardProps = HTMLAttributes<HTMLDivElement> & {
   title: string;
