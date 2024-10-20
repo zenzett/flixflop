@@ -4,12 +4,12 @@ const nextConfig = {
       {
         source: "/",
         destination: "/home",
-        permanent: true,
+        permanent: false,
       },
     ];
   },
   images: {
-    domains: ["m.media-amazon.com"], // Tambahkan domain di sini
+    domains: ["m.media-amazon.com"],
   },
 };
 
