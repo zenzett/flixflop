@@ -32,14 +32,10 @@
   }
 
   .btn.primary {
-    @apply text-dark-90 bg-orange-30 hover:bg-orange-20 focus:outline-gray-500 disabled:bg-gray-700 disabled:text-gray-800;
+    @apply text-dark-80 bg-orange-40 border-orange-40 hover:bg-orange-20 hover:border-orange-20  focus:outline-orange-20 disabled:border-gray-800 disabled:bg-gray-800 disabled:text-gray-950 disabled:hover:cursor-not-allowed;
   }
 
-  .btn.primary-outline {
-    @apply text-dark-90 bg-transparent border-orange-30 hover:bg-orange-20  focus:outline-gray-500 disabled:border-gray-700 disabled:text-gray-800;
-  }
-
-  .btn.primary.transparent {
-    @apply text-orange-30 bg-transparent border-transparent focus:outline-orange-20 disabled:text-gray-800;
+  .btn.primary-transparent {
+    @apply text-orange-40 bg-transparent border-2 border-orange-30 hover:bg-orange-10  focus:outline-orange-20 disabled:border-gray-600 disabled:text-gray-600 disabled:hover:cursor-not-allowed disabled:hover:bg-transparent;
   }
 }
