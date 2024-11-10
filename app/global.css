@@ -6,7 +6,7 @@
   /* ===== CONTAINER ===== */
   .wrapper {
     min-height: calc(100vh - 64px);
-    @apply mx-auto bg-dark-90;
+    @apply mx-auto bg-background;
   }
 
   .inner-wrapper {
@@ -16,7 +16,7 @@
 
   /* ===== BUTTON ===== */
   .btn {
-    @apply rounded-lg font-semibold h-10 disabled:bg-gray-700 border focus:outline focus:outline-[3px] flex items-center justify-center gap-2;
+    @apply rounded-lg font-semibold h-10 disabled:bg-gray-disabled border-2 flex items-center justify-center gap-2 shadow-lg active:scale-90 transition duration-100 disabled:active:scale-100;
   }
 
   .btn.sm {
@@ -32,10 +32,95 @@
   }
 
   .btn.primary {
-    @apply text-dark-80 bg-orange-40 border-orange-40 hover:bg-orange-20 hover:border-orange-20  focus:outline-orange-20 disabled:border-gray-800 disabled:bg-gray-800 disabled:text-gray-950 disabled:hover:cursor-not-allowed;
+    @apply text-background bg-pink-magenta border-pink-magenta shadow-pink-disabled hover:bg-pink-hover disabled:bg-pink-disabled disabled:border-pink-disabled disabled:text-gray-disabled disabled:hover:cursor-not-allowed;
   }
 
-  .btn.primary-transparent {
-    @apply text-orange-40 bg-transparent border-2 border-orange-30 hover:bg-orange-10  focus:outline-orange-20 disabled:border-gray-600 disabled:text-gray-600 disabled:hover:cursor-not-allowed disabled:hover:bg-transparent;
+  .btn.primary.transparent {
+    @apply text-pink-magenta bg-transparent border-transparent shadow-transparent hover:border-transparent disabled:border-transparent disabled:bg-transparent disabled:text-gray-disabled disabled:hover:cursor-not-allowed;
+  }
+
+  .btn.primary.transparent.bordered {
+    @apply border-pink-magenta shadow-pink-disabled hover:border-pink-hover disabled:border-pink-disabled;
+  }
+
+  .btn.dark {
+    @apply text-pink-magenta bg-background border-background shadow-transparent hover:bg-pink-950 hover:border-pink-950 disabled:bg-pink-disabled disabled:border-pink-disabled disabled:text-gray-disabled disabled:hover:cursor-not-allowed;
+  }
+
+  /* ===== FORM GROUP ===== */
+  .form-group {
+    @apply mb-4;
+  }
+
+  .form-message {
+    @apply text-sm text-foreground block last:mt-1.5;
+  }
+
+  .form-message.danger {
+    @apply text-red-600;
+  }
+
+  /* ===== FORM ICON ===== */
+  .form-icon {
+    @apply relative;
+  }
+
+  .form-icon .icon {
+    @apply absolute w-5 h-5 top-3.5 right-3 z-10 text-foreground flex items-center justify-center;
+  }
+
+  .form-icon.icon-left .icon {
+    @apply left-3;
+  }
+
+  .form-icon.icon-left .input {
+    @apply pl-10;
+  }
+
+  .form-icon.icon-right .icon {
+    @apply right-3;
+  }
+
+  .form-icon.icon-right .input {
+    @apply pr-10;
+  }
+
+  /* ===== LABEL ===== */
+  .label {
+    @apply text-sm font-semibold text-foreground block mb-2;
+  }
+
+  /* ===== INPUT ===== */
+  .input {
+    @apply h-12 px-3 py-3.5 border rounded-lg border-pink-magenta focus:border-foreground outline-none disabled:bg-pink-disabled disabled:border-pink-disabled disabled:text-foreground w-full block;
+  }
+
+  .border.error {
+    @apply border-red-600;
+  }
+
+  /* ===== TOAST ===== */
+  .toast-container {
+    @apply fixed hidden z-20 opacity-0 justify-center top-16 w-full transition-all duration-200 ease-in-out px-4 lg:px-0;
+  }
+
+  .toast-container.active {
+    @apply top-24 flex;
+  }
+
+  .toast {
+    @apply text-foreground p-3 rounded-[10px] w-full max-w-2xl relative;
+  }
+
+  .toast.success {
+    @apply bg-pink-focus;
+  }
+
+  .toast.error {
+    @apply bg-red-600;
+  }
+
+  .toast-close-btn {
+    @apply absolute right-3 top-3;
   }
 }

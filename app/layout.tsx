@@ -6,13 +6,9 @@ export const metadata: Metadata = {
   title: "FlixFlop",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full bg-dark-90 text-gray-400">
+    <html lang="en" className="h-full bg-background text-foreground">
       <body className="h-full">{children}</body>
     </html>
   );
