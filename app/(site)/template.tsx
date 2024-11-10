@@ -1,5 +1,6 @@
 export const dynamic = "auto";
 
+import { cookies } from "next/headers";
 import { Fragment, FunctionComponent } from "react";
 
 import Footer from "@/components/molecules/Footer";
@@ -9,12 +10,13 @@ interface RootTemplateProps {
   children: React.ReactNode;
 }
 
-const RootTemplate: FunctionComponent<RootTemplateProps> = async ({
-  children,
-}) => {
+const RootTemplate: FunctionComponent<RootTemplateProps> = async ({ children }) => {
+  const cookieStore = cookies();
+  const name = cookieStore.get("name")?.value;
+
   return (
     <Fragment>
-      <Navbar />
+      <Navbar name={name ?? undefined} />
       <div className="wrapper">
         <div className="inner-wrapper">
           <div className="w-full p-8">{children}</div>

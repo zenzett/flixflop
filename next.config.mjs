@@ -4,12 +4,15 @@ const nextConfig = {
       {
         source: "/",
         destination: "/home",
-        permanent: true,
+        permanent: false,
         // experimental: {
         //   serverActions: true,
         // },
       },
     ];
+  },
+  images: {
+    domains: ["m.media-amazon.com"],
   },
 };
 
